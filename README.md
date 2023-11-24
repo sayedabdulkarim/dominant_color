@@ -51,6 +51,16 @@ Enter the value in the input field.
 Click the 'Submit' button.
 The dominant color extracted from the image will be displayed on the screen.
 
+# Dataset Relation
+
+The application works by taking a user's search input to fetch relevant images using the Pexels API. The backend then processes these images to extract the dominant colors. Here's how the dataset relation works in this project:
+
+Input: The user enters a search term (e.g., "ocean", "forest", "red car").
+Image Fetching: The backend makes a request to the Pexels API with the user's search term to fetch related images.
+Color Extraction: The backend uses the Vibrant.js library to analyze each image and extract the most dominant color.
+Output: The frontend displays the fetched images dominant colors.
+This process showcases the relationship between the user's search input and the resulting colors, demonstrating how the application can interpret and visualize color themes from various subjects.
+
 # Technologies Used
 
     Backend:

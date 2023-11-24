@@ -74,6 +74,7 @@ const ImageColorExtractor = () => {
           value={input}
           onChange={handleInputChange}
           placeholder="Enter"
+          autoFocus
         />
         <button onClick={handleSearch}>Search</button>
       </div>
