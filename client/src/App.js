@@ -77,7 +77,6 @@ const ImageColorExtractor = () => {
         />
         <button onClick={handleSearch}>Search</button>
       </div>
-
       {isLoading ? (
         <Loader />
       ) : (
