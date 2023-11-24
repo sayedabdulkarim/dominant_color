@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
+//comonent
+import Loader from "./component/Loader";
+
 const ImageColorExtractor = () => {
   //state
   const [input, setInput] = useState("");
@@ -12,7 +15,7 @@ const ImageColorExtractor = () => {
   const fetchImages = async () => {
     setIsLoading(true);
     const headers = {
-      Authorization: "vzdAVcBEbrZxjsu7ONjLrWkufBHKpL0SQCsJbIU2RE0LtCoZA4NQUjvm",
+      Authorization: "vzdAVcBEbrZxjsu7ONjLrWkufBHKpL0SQCsJbIU2RE0LtCoZA4NQUjvm", // for reviewing added, move to env
     };
 
     try {
@@ -54,13 +57,6 @@ const ImageColorExtractor = () => {
     fetchImages();
   };
 
-  //async
-  // useEffect(() => {
-  //   images.forEach((img) => {
-  //     extractColors(img.src.medium);
-  //   });
-  // }, [images]);
-
   useEffect(() => {
     if (images.length > 0) {
       setIsLoading(true); // Start loading
@@ -71,51 +67,32 @@ const ImageColorExtractor = () => {
   }, [images]);
 
   return (
-    <div>
-      <input type="text" value={input} onChange={handleInputChange} />
-      <button onClick={handleSearch}>Search</button>
-      <button
-        onClick={() =>
-          console.log({
-            images,
-            colors,
-          })
-        }
-      >
-        Data
-      </button>
+    <div className={"main_wrapper"}>
+      <div className={"search_container"}>
+        <input
+          type="text"
+          value={input}
+          onChange={handleInputChange}
+          placeholder="Enter"
+        />
+        <button onClick={handleSearch}>Search</button>
+      </div>
 
       {isLoading ? (
-        "Loading"
+        <Loader />
       ) : (
-        <div
-          style={{
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "space-between",
-            flexWrap: "wrap",
-            width: "100%",
-            border: "1px solid green",
-          }}
-        >
+        <div className={"items_wrapper"}>
           {images.map((image) => (
-            <div
-              key={image.id}
-              style={{
-                width: "24%",
-                border: "1px solid red",
-              }}
-            >
+            <div key={image.id} className={"item"}>
               {/* <img src={image.src.medium} alt={image.alt} /> */}
               {colors[image.src.medium] && (
                 <div
+                  className={"item_block"}
                   style={{
                     backgroundColor: colors[image.src.medium],
-                    color: "white",
-                    height: "100px",
                   }}
                 >
-                  Dominant Color: {colors[image.src.medium]}
+                  {colors[image.src.medium]}
                 </div>
               )}
             </div>
