@@ -1,4 +1,4 @@
-# Dominant Color Extraction Project
+# Dominant Color Extraction Project.
 
 This project is designed to extract dominant colors from search input. It consists of two main parts: a backend server built with Node.js and Express, and a frontend interface built with React. The backend server handles input images processing to extract dominant colors, while the frontend provides a user interface for submitting input and displaying results.
 
